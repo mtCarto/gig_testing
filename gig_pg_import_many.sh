@@ -21,11 +21,9 @@ for (( numrepos=0; numrepos<$NUM_ITER; numrepos++))
       geogig init --repo $repo
       geogig config user.name tester --repo $repo
       geogig config user.email tester@test.com --repo $repo
-      echo "Importing layer $table"
+      
       geogig --repo $repo pg import  -D gigTest -t $table -d $table
-      echo "Adding layer $table"
       geogig --repo $repo add $table
-      echo "Commit $table" 
       geogig --repo $repo commit -m "initial commit of data from $table" 
       
       tablenum=$(($tablenum + 1))
